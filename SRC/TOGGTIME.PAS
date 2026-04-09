@@ -32,10 +32,10 @@ begin
   ClrScr;
   CenterLn(3, 'Toggtime  -  Help');
   Say(33, 8, 'Q     Exit program');
-  Say(33, 9, 'A     Toggle attributes only');
-  Say(33, 10, 'B     Both attributes and characters');
-  Say(33, 11, 'C     Toggle characters only');
-  Say(33, 12, 'P     Pause');
+  Say(33, 9, 'P     Pause');
+  Say(33, 10, 'A     Toggle attributes only');
+  Say(33, 11, 'B     Both attributes and characters');
+  Say(33, 12, 'C     Toggle characters only');
   Say(33, 13, 'U     Unique attributes and characters');
   Say(28, 14, 'H, Esc     Toggle this help screen');
   CenterLn(22, 'Toggtime  !!!   - Author: The Hello World Writer');
