@@ -25,6 +25,8 @@ begin
 end;
 
 procedure HelpScreen;
+var
+  HelpDone : Boolean;
 begin
   TextAttr := Attr(7, 0);
   ClrScr;
@@ -38,8 +40,16 @@ begin
   CenterLn(22, 'Toggtime  !!!   - Author: The Hello World Writer');
   CenterLn(23, 'Direct video memory writes small demo program');
   CenterLn(25, 'Version 1.0  Oct 13 1995');
-  CenterLn(17, 'Now press any key to continue...');
-  if ReadKey = #0 then ReadKey
+  HelpDone := False;
+  repeat
+    ReadAKey(Ch, ECh);
+    case UpCase(Ch) of
+      'H', #27,
+      'A', 'B', 'C', 'U', 'P', 'Q' : HelpDone := True
+    else
+      SoundX(700, 50)
+    end
+  until HelpDone
 end;
 
 begin
@@ -60,6 +70,7 @@ begin
       if Cod in [1, 2, 4, 5] then Screen[I, J, 2] := A
     until KeyPressed;
     ReadAKey(Ch, ECh);
+    if Ch in ['H', 'h', #27] then HelpScreen;
     case UpCase(Ch) of
       'A' : Cod := 1;
       'B' : Cod := 2;
@@ -71,7 +82,7 @@ begin
               if ReadKey = #0 then ReadKey
             end;
       'Q' : Done := True;
-      'H', #27 : HelpScreen
+      'H', #27 : ;
     else
       SoundX(700, 50)
     end
