@@ -12,7 +12,6 @@ unit Cursor;
 interface
 
 { Cursor shape constants }
-
 const
   CGACursor     = $0607;    { Scan lines 6-7 (CGA underline) }
   MDACursor     = $0B0C;    { Scan lines 11-12 (MDA underline) }
@@ -20,32 +19,25 @@ const
   HiddenCursor  = $2000;    { Bit 5 of CH set = cursor disabled }
 
 { Selected video page (used by all routines below) }
-
 const
   CVPage : Byte = 0;
 
 { Sets the cursor speed (keyboard typematic rate via port $60) }
-
 procedure SetCursorSpeed(NewSpeed : Word);
 
 { Returns the current cursor shape word (high byte = top scan line, low = bottom) }
-
 function CursorShape: Word;
 
 { Sets the cursor shape (high byte of Shape = top scan line, low = bottom) }
-
 procedure SetCursorShape(Shape: Word);
 
 { Moves the cursor to (X, Y) - zero-based BIOS coordinates }
-
 procedure MoveCursor(X, Y: Byte);
 
 { Returns the cursor's X (column) coordinate }
-
 function CPX: Byte;
 
 { Returns the cursor's Y (row) coordinate }
-
 function CPY: Byte;
 
 implementation
