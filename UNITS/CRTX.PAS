@@ -1,17 +1,15 @@
-(**********************************************************)
-{                                                          }
-{  The Hello World Writer's                                }
-{  Turbo Pascal Library                                    }
-{  Crt-Oriented Routines Unit                              }
-{                                                          }
-(**********************************************************)
-
+{*******************************************************}
+{                                                       }
+{    The Hello World Writer's Turbo Pascal Library      }
+{    Crt-Oriented Routines Unit.                        }
+{                                                       }
+{    Copyright (c) 1995-2026 The Hello World Writer     }
+{                                                       }
+{*******************************************************}
 
 unit CrtX;
 
-
 interface
-
 
 type
   FrameChars = array[1..6] of Char;
@@ -46,9 +44,7 @@ procedure HorizLn(X1, X2, Y : Byte ; Ch : Char);
 procedure Frame(X1, Y1, X2, Y2 : Byte ; Fr : FrameChars);
 procedure SoundX(Hz : Word ; MS : Word);
 
-
 implementation
-
 
 uses Crt;
 

@@ -1,17 +1,15 @@
-(**********************************************************)
-{                                                          }
-{  The Hello World Writer's                                }
-{  Turbo Pascal Library                                    }
-{  Video Memory Arrays Interface Unit                      }
-{                                                          }
-(**********************************************************)
-
+{*******************************************************}
+{                                                       }
+{    The Hello World Writer's Turbo Pascal Library      }
+{    Video Memory Arrays Interface Unit                 }
+{                                                       }
+{    Copyright (c) 1995-2026 The Hello World Writer     }
+{                                                       }
+{*******************************************************}
 
 unit ViAt;
 
-
 interface
-
 
 const
   VideoOfs = $0000;
@@ -34,8 +32,6 @@ var
 var
   Screen8x8 : array [1..50, 1..40, 1..2] of Byte absolute VideoSeg : VideoOfs;
 
-
 implementation
-
 
 end.

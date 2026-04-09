@@ -1,16 +1,15 @@
-(**********************************************************)
-{                                                          }
-{  The Hello World Writer's                                }
-{  Turbo Pascal Library                                    }
-{  Char-Oriented Routines Unit.                            }
-{                                                          }
-(**********************************************************)
+{*******************************************************}
+{                                                       }
+{    The Hello World Writer's Turbo Pascal Library      }
+{    Char-Oriented Routines Unit                        }
+{                                                       }
+{    Copyright (c) 1995-2026 The Hello World Writer     }
+{                                                       }
+{*******************************************************}
 
 unit StdChar;
 
-
 interface
-
 
 type
   PXChar = ^Char;
@@ -30,8 +29,6 @@ const
 const
   HexDigitsSet : set of '0'..'z' = ['0'..'9', 'A'..'F', 'a'..'f'];
 
-
 implementation
-
 
 end.

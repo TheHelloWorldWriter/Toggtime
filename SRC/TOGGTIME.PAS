@@ -1,12 +1,11 @@
-(**********************************************************)
-{                                                          }
-{  The Hello World Writer's                                }
-{  Turbo Pascal Programs Source                            }
-{                                                          }
-{  Toggtime Version 1.0                                    }
-{                                                          }
-(**********************************************************)
-
+{*******************************************************}
+{                                                       }
+{    Toggtime Version 1.0                               }
+{    Main Program Source Code                           }
+{                                                       }
+{    Copyright (c) 1995-2026 The Hello World Writer     }
+{                                                       }
+{*******************************************************}
 
 program Toggtime;
 

@@ -1,17 +1,15 @@
-(**********************************************************)
-{                                                          }
-{  The Hello World Writer's                                }
-{  Turbo Pascal Library                                    }
-{  Keyboard Crt-Oriented Routines Unit                     }
-{                                                          }
-(**********************************************************)
-
+{*******************************************************}
+{                                                       }
+{    The Hello World Writer's Turbo Pascal Library      }
+{    Keyboard Crt-Oriented Routines Unit                }
+{                                                       }
+{    Copyright (c) 1995-2026 The Hello World Writer     }
+{                                                       }
+{*******************************************************}
 
 unit CRTKeyb;
 
-
 interface
-
 
 uses StdChar;
 
@@ -36,9 +34,7 @@ function  ExtKeyInRange(const K : TCharSet) : Char;
 function  IsKey(const Key : Char) : Boolean;
 function  IsExtKey(const Key : Char) : Boolean;
 
-
 implementation
-
 
 uses Crt;
 
@@ -100,6 +96,5 @@ begin
     if (Ch = Key) and (C = #0) then IsExtKey := True
   end;
 end;
-
 
 end.

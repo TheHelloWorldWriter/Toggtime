@@ -1,63 +1,59 @@
-(**********************************************************)
-{                                                          }
-{  The Hello World Writer's                                }
-{  Turbo Pascal Library                                    }
-{  Cursor Handling Unit                                    }
-{                                                          }
-(**********************************************************)
-
+{*******************************************************}
+{                                                       }
+{    The Hello World Writer's Turbo Pascal Library      }
+{    Cursor Handling Unit                               }
+{                                                       }
+{    Copyright (c) 1995-2026 The Hello World Writer     }
+{                                                       }
+{*******************************************************}
 
 unit Cursor;
 
-
 interface
-
 
 { Cursor shape constants }
 
 const
-  CGACursor	= $0607;
-  MDACursor	= $0B0C;
-  VGACursor	= $0D0E;
-  HiddenCursor	= $2000;
+  CGACursor     = $0607;
+  MDACursor     = $0B0C;
+  VGACursor     = $0D0E;
+  HiddenCursor  = $2000;
 
-{ Stores a selected video page. }
+{ Stores a selected video page.                                 }
 
 const
   CVPage : Byte = 0;
 
-{ Sets the cursor speed.						}
+{ Sets the cursor speed.                                        }
 
 procedure SetCursorSpeed(NewSpeed : Word);
 
-{ Returns the current shape of the cursor for the CVPage video page.	}
+{ Returns the current shape of the cursor for the CVPage video page. }
 
 function CursorShape: Word;
 
 { Selects the current shape of the cursor. The high-order byte of Shape }
-{ is the first line of the cursor and the low-order byte of Shape is	}
-{ the last line of the cursor within the current row of characters.	}
-{ The cursor is visible only in text mode.				}
+{ is the first line of the cursor and the low-order byte of Shape is }
+{ the last line of the cursor within the current row of characters. }
+{ The cursor is visible only in text mode. }
 
 procedure SetCursorShape(Shape: Word);
 
-{ Moves the cursor to the given coordinates for the CVPage video page.	}
+{ Moves the cursor to the given coordinates for the CVPage video page.      }
 
 procedure MoveCursor(X, Y: Byte);
 
-{ Returns the X coordinate of the current cursor location for the	}
-{ CVPage video page.							}
+{ Returns the X coordinate of the current cursor location for the }
+{ CVPage video page. }
 
 function CPX: Byte;
 
-{ Returns the Y coordinate of the current cursor location for the	}
-{ CVPage video page.							}
+{ Returns the Y coordinate of the current cursor location for the }
+{ CVPage video page. }
 
 function CPY: Byte;
 
-
 implementation
-
 
 uses Crt;
 
@@ -70,42 +66,42 @@ end;
 
 function CursorShape: Word; assembler;
 asm
-	MOV	AH,03H
-	MOV	BH,CVPage
-        INT	10H
-	MOV	AX,CX
+        MOV AH,03H
+        MOV BH,CVPage
+        INT 10H
+        MOV AX,CX
 end;
 
 procedure SetCursorShape(Shape: Word); assembler;
 asm
-	MOV	AH,01H
-        MOV	CX,Shape
-        INT	10H
+        MOV AH,01H
+        MOV CX,Shape
+        INT 10H
 end;
 
 procedure MoveCursor(X, Y: Byte); assembler;
 asm
-	MOV	AH,02H
-	MOV	BH,CVPage
-        MOV	DH,Y
-        MOV	DL,X
-        INT	10H
+        MOV AH,02H
+        MOV BH,CVPage
+        MOV DH,Y
+        MOV DL,X
+        INT 10H
 end;
 
 function CPX: Byte; assembler;
 asm
-	MOV	AH,03H
-	MOV	BH,CVPage
-        INT	10H
-	MOV	AL,DL
+        MOV AH,03H
+        MOV BH,CVPage
+        INT 10H
+        MOV AL,DL
 end;
 
 function CPY: Byte; assembler;
 asm
-	MOV	AH,03H
-	MOV	BH,CVPage
-        INT	10H
-	MOV	AL,DH
+        MOV AH,03H
+        MOV BH,CVPage
+        INT 10H
+        MOV AL,DH
 end;
 
 end.
