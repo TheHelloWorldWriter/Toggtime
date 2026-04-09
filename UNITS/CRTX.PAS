@@ -11,37 +11,59 @@ unit CrtX;
 
 interface
 
+{ Extensions to Crt: attributes, windows, layout helpers, frames, sound }
+
+{ Six box-drawing chars: [1]=horiz, [2]=vert, [3]=TL, [4]=BL, [5]=BR, [6]=TR }
 type
   FrameChars = array[1..6] of Char;
 
 const
   Single : FrameChars = 'Ä³ÚÀÙ¿'; { Chr 196,179,218,192,217,191 }
   Double : FrameChars = 'ÍºÉÈ¼»'; { Chr 205,186,201,200,188,187 }
-  Pixels : FrameChars = '......';
+  Pixels : FrameChars = '......';   { Six period chars }
 
+{ Sound parameters for SaySound: tone freq, tone duration, silence after }
 const
   SaySoundRec : record
     Freq, Delay1, Delay2 : Word;
   end = ( Freq : 5000 ; Delay1 : 1 ; Delay2 : 50);
 
+{ Combines foreground C and background B colors into a text attribute byte }
 function  Attr(const C, B :  Byte) : Byte;
+{ Resets the active window to full screen (1,1)-(80,25) }
 procedure NormWindow;
+{ Sets a window, fills it with attribute Attr, and clears it }
 procedure Win(const X1, Y1, X2, Y2, Attr : Byte);
+{ Sets a full-screen window with attribute Attr and clears it }
 procedure NormWin(const Attr : Byte);
+{ Clears the current window with attribute Attr }
 procedure Clr(const Attr : Byte);
+{ Moves the cursor to column X (current row) }
 procedure TabX(const X : Byte);
+{ Moves the cursor to row Y (current column) }
 procedure TabY(const Y : Byte);
+{ Moves the cursor by relative offset (X, Y) }
 procedure Plus(const X, Y : Byte);
+{ Writes Msg at the current cursor position with attribute Attr }
 procedure SayCo(const Attr : Byte ; const Msg : string);
 
+{ Writes S character by character with a beep on each (see SaySoundRec) }
 procedure SaySound(S : string);
+{ Writes S at position (X, Y) }
 procedure Say(X, Y : Byte ; S : string);
+{ Writes S centered horizontally on row Line (within current window) }
 procedure CenterLn(Line : Byte ; S : string);
+{ Writes S centered both horizontally and vertically (within current window) }
 procedure Center(S : string);
+{ Writes S vertically starting at (X, Y), one char per row }
 procedure Vert(X, Y : Byte ; S : string);
+{ Draws a vertical line of Ch from (X, Y1) to (X, Y2) }
 procedure VertLn(X, Y1, Y2 : Byte ; Ch : Char);
+{ Draws a horizontal line of Ch from (X1, Y) to (X2, Y) }
 procedure HorizLn(X1, X2, Y : Byte ; Ch : Char);
+{ Draws a rectangle frame using FrameChars Fr (e.g. Single, Double, Pixels) }
 procedure Frame(X1, Y1, X2, Y2 : Byte ; Fr : FrameChars);
+{ Plays a tone of Hz frequency for MS milliseconds (PC speaker) }
 procedure SoundX(Hz : Word ; MS : Word);
 
 implementation
@@ -50,6 +72,7 @@ uses Crt;
 
 function Attr(const C, B : Byte) : Byte; assembler;
 asm
+	{ AL = B * 16 + C  (background in high nibble, foreground in low) }
 	MOV	AL,16
 	MUL	B
 	ADD	AL, C
