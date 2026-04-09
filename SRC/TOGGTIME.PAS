@@ -15,6 +15,7 @@ var
   I,J,C,A : Byte;
   Ch, ECh : Char;
   Cod : 1..5;
+  Done : Boolean;
 
 procedure ComLnHelp;
 begin
@@ -27,13 +28,13 @@ procedure HelpScreen;
 begin
   TextAttr := Attr(7, 0);
   ClrScr;
-  Say(31, 8, 'Esc     Exit program');
+  Say(33, 8, 'Q     Exit program');
   Say(33, 9, 'A     Toggle attributes only');
   Say(33, 10, 'B     Both attributes and characters');
   Say(33, 11, 'C     Toggle characters only');
   Say(33, 12, 'P     Pause');
   Say(33, 13, 'U     Unique attributes and characters');
-  Say(25, 14, 'Other key     This help screen');
+  Say(28, 14, 'H, Esc     This help screen');
   CenterLn(22, 'Toggtime  !!!   - Author: The Hello World Writer');
   CenterLn(23, 'Direct video memory writes small demo program');
   CenterLn(25, 'Version 1.0  Oct 13 1995');
@@ -47,6 +48,7 @@ begin
   SetCursorShape(HiddenCursor);
   Randomize;
   Cod := 2;
+  Done := False;
   repeat
     repeat
       I := Random(26);
@@ -57,7 +59,7 @@ begin
       if Cod in [2, 3, 4, 5] then Screen[I, J, 1] := C;
       if Cod in [1, 2, 4, 5] then Screen[I, J, 2] := A
     until KeyPressed;
-    ReadAKey(Ch, Ech);
+    ReadAKey(Ch, ECh);
     case UpCase(Ch) of
       'A' : Cod := 1;
       'B' : Cod := 2;
@@ -65,13 +67,15 @@ begin
       'U' : Cod := 4;
       'P' : begin
               TextAttr := Attr(15, 0);
-              Say(1,25,'Paused. Press any key to continue...');
+              Say(1, 25, 'Paused. Press any key to continue...');
               if ReadKey = #0 then ReadKey
-            end
-      else
-        if Ch <> #27 then HelpScreen
+            end;
+      'Q' : Done := True;
+      'H', #27 : HelpScreen
+    else
+      SoundX(700, 50)
     end
-  until Ch = #27;
+  until Done;
   SetCursorShape(VGACursor);
   TextAttr := Attr(7, 0);
   ClrScr
