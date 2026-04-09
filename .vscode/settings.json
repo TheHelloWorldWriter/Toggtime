@@ -1,0 +1,12 @@
+{
+  "files.eol": "\r\n",
+  "editor.tabSize": 2,
+  "[pascal]": {
+    "files.encoding": "cp437"
+  },
+  "editor.rulers": [
+    80,
+    100,
+    120
+  ],
+}
