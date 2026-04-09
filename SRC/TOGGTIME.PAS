@@ -12,11 +12,12 @@ program Toggtime;
 uses Crt, CrtX, ViAT, Cursor, CRTKeyb;
 
 var
-  I,J,C,A : Byte;
-  Ch, ECh : Char;
-  Cod : 1..5;
-  Done : Boolean;
+  I,J,C,A : Byte;     { Anim: row I, column J, char code C, attribute A }
+  Ch, ECh : Char;     { Key pair from ReadAKey }
+  Cod : 1..5;         { Mode 1=attr, 2=both, 3=char, 4-5=unique }
+  Done : Boolean;     { Main loop exit flag }
 
+{ Prints command-line help and exits (called when /? is passed) }
 procedure ComLnHelp;
 begin
   WriteLn('Toggtime v1.0  Program by The Hello World Writer. Oct 13 1995');
@@ -24,6 +25,7 @@ begin
   Halt(0)
 end;
 
+{ Draws the interactive help screen and waits for a recognized key }
 procedure HelpScreen;
 var
   HelpDone : Boolean;
@@ -58,15 +60,16 @@ begin
   TextMode(3);
   SetCursorShape(HiddenCursor);
   Randomize;
-  Cod := 2;
+  Cod := 2;     { Default mode: both attrs and chars }
   Done := False;
   repeat
+    { Inner loop: animate VRAM until a key is pressed }
     repeat
       I := Random(26);
       J := Random(81);
       if Cod in [2, 3, 4] then C := Random(256);
       if Cod in [1, 2, 4] then A := Random(256);
-      if Cod = 4 then Cod := 5;
+      if Cod = 4 then Cod := 5;    { One-shot init for mode 5 (locks C, A) }
       if Cod in [2, 3, 4, 5] then Screen[I, J, 1] := C;
       if Cod in [1, 2, 4, 5] then Screen[I, J, 2] := A
     until KeyPressed;
