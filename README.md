@@ -28,6 +28,16 @@ When you launch Toggtime, it starts filling the screen with random characters an
 | **C** — Characters only | **Q** — Quit |
 | **U** — Unique attributes and characters | |
 
+## Download
+
+<p>
+  <a href="https://github.com/TheHelloWorldWriter/Toggtime/releases/latest">
+    <img alt="Download Toggtime from GitHub Releases" src="https://img.shields.io/badge/Download-from_GitHub_Releases-181717?style=for-the-badge&logo=github">
+  </a>
+</p>
+
+The ZIP contains the DOS executable, a short readme, and the MIT license. Run `TOGGTIME.EXE` in [DOSBox-X](https://dosbox-x.com/) or any DOS-compatible environment.
+
 ## Building and running
 
 I build and run Toggtime using [DOSBox-X](https://dosbox-x.com/) on macOS, with a copy of [Borland Turbo Pascal 7.0](https://winworldpc.com/product/turbo-pascal/7x) downloaded from WinWorld:
@@ -35,7 +45,7 @@ I build and run Toggtime using [DOSBox-X](https://dosbox-x.com/) on macOS, with 
 1. Mount the project directory and the Turbo Pascal installation in DOSBox-X
 2. Launch `TURBO.EXE` and set **Options > Directories** to point at the `UNITS\` path
 3. Open `SRC\TOGGTIME.PAS`
-4. Press **F9** to compile, **Ctrl+F9** to run
+4. Press **ALT+F9** to compile, **Ctrl+F9** to run
 
 What surprised me was how familiar it all felt. Turbo Pascal was one of the first IDEs I ever worked in — along with QBasic and Turbo C++ — when I was learning to program for the first time. And here it is again: the same blue editor, the same compilation dialog, running inside a macOS window with traffic-light buttons. A different frame around a very familiar experience.
 
@@ -43,7 +53,7 @@ What surprised me was how familiar it all felt. Turbo Pascal was one of the firs
   <tr>
     <td align="center">
       <img src="docs/images/toggtime-turbo-pascal-dosbox-x-macos-window-screenshot.png" width="400" alt="Borland Turbo Pascal 7 IDE showing successful compilation of TOGGTIME.PAS in DOSBox-X on macOS">
-      <br><em>Compiling in Turbo Pascal 7</em>
+      <br><em>Compiling in Turbo Pascal on macOS</em>
     </td>
     <td align="center">
       <img src="docs/images/toggtime-dosbox-x-macos-window-screenshot.png" width="400" alt="Toggtime running in DOSBox-X on macOS, showing colorful random characters filling the screen">
