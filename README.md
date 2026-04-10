@@ -70,8 +70,9 @@ The five units are small and reusable on their own. They may eventually move int
 
 ## License
 
-MIT — see [LICENSE](LICENSE).
+Toggtime is licensed under the [MIT License](LICENSE).
 
 ---
 
-A small program from 1995, given a home in 2026.
+Made with ❤️ in Oradea, Romania
+[https://www.thehelloworldwriter.com](https://www.thehelloworldwriter.com)
