@@ -13,7 +13,7 @@ Toggtime is a small DOS demo I wrote in October 1995 in Borland Turbo Pascal 7, 
   <img src="docs/images/toggtime-dosbox-x-macos-demo.gif" width="480" alt="Animated demo of Toggtime toggling random characters and color attributes on a DOS text-mode screen">
 </p>
 
-Toggtime is the small demo I built to see that in action. It throws random characters and color attributes at video memory as fast as the CPU allows, and lets you switch modes to isolate what each byte does: colors only, characters only, both at once, or a single random pair frozen across the entire screen.
+I built it to see that in action. It throws random characters and color attributes at video memory as fast as the CPU allows, and lets you switch modes to isolate what each byte does: colors only, characters only, both at once, or a single random pair frozen across the entire screen.
 
 Thirty years later, in April 2026, I brought it back to life on a modern Mac via DOSBox-X. It still works.
 
@@ -62,7 +62,7 @@ What surprised me was how familiar it all felt. Turbo Pascal was one of the firs
   </tr>
 </table>
 
-## Project layout
+## Source layout
 
 ```
 SRC/

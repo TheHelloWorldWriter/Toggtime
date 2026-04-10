@@ -1,7 +1,6 @@
-
 ======================================================================
 
-  Toggtime v1.0
+  Toggtime v1.0.0
   Direct video memory writes small demo program
 
   Copyright (c) 1995-2026 The Hello World Writer

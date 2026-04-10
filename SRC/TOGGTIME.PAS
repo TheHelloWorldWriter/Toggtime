@@ -1,6 +1,6 @@
 {*******************************************************}
 {                                                       }
-{    Toggtime Version 1.0                               }
+{    Toggtime Version 1.0.0                             }
 {    Main Program Source Code                           }
 {                                                       }
 {    Copyright (c) 1995-2026 The Hello World Writer     }
@@ -20,7 +20,7 @@ var
 { Prints command-line help and exits (called when /? is passed) }
 procedure ComLnHelp;
 begin
-  WriteLn('Toggtime v1.0  Program by The Hello World Writer. Oct 13 1995');
+  WriteLn('Toggtime v1.0.0  Program by The Hello World Writer. Oct 13 1995');
   WriteLn('Direct video memory writes small demo program.');
   Halt(0)
 end;
@@ -42,7 +42,7 @@ begin
   Say(28, 14, 'H, Esc     Toggle this help screen');
   CenterLn(22, 'Toggtime  !!!   - Author: The Hello World Writer');
   CenterLn(23, 'Direct video memory writes small demo program');
-  CenterLn(25, 'Version 1.0  Oct 13 1995');
+  CenterLn(25, 'Version 1.0.0  Oct 13 1995');
   HelpDone := False;
   repeat
     ReadAKey(Ch, ECh);

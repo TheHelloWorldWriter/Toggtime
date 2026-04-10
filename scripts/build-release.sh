@@ -6,7 +6,7 @@
 
 set -e
 
-VERSION="1.0"
+VERSION="1.0.0"
 ARCHIVE="dist/toggtime-${VERSION}-dos.zip"
 
 EXE="SRC/TOGGTIME.EXE"
