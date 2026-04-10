@@ -21,15 +21,16 @@ Thirty years later, in April 2026, I brought it back to life on a modern Mac via
 
 When you launch Toggtime, it starts filling the screen with random characters and color attributes. You can change the mode with single keystrokes:
 
-| Key | Effect |
-|---|---|
-| A | Toggle attributes only |
-| B | Both attributes and characters (default) |
-| C | Toggle characters only |
-| U | Unique attributes and characters |
-| P | Pause |
-| H, Esc | Show or hide the help screen |
-| Q | Quit |
+<table width="100%">
+  <tr><th>Key</th><th>Effect</th></tr>
+  <tr><td>A</td><td>Toggle attributes only</td></tr>
+  <tr><td>B</td><td>Both attributes and characters (default)</td></tr>
+  <tr><td>C</td><td>Toggle characters only</td></tr>
+  <tr><td>U</td><td>Unique attributes and characters</td></tr>
+  <tr><td>P</td><td>Pause</td></tr>
+  <tr><td>H, Esc</td><td>Show or hide the help screen</td></tr>
+  <tr><td>Q</td><td>Quit</td></tr>
+</table>
 
 ## Building and running
 
