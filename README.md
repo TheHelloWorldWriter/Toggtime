@@ -1,5 +1,12 @@
 # Toggtime
 
+![Turbo Pascal 7.0](https://img.shields.io/badge/Turbo_Pascal-7.0-0000AA)
+![MS-DOS](https://img.shields.io/badge/Platform-MS--DOS-000000)
+![Written in 1995](https://img.shields.io/badge/Written_in-1995-CC8800)
+![License: MIT](https://img.shields.io/github/license/TheHelloWorldWriter/Toggtime)
+![GitHub Release](https://img.shields.io/github/v/release/TheHelloWorldWriter/Toggtime)
+![GitHub Downloads](https://img.shields.io/github/downloads/TheHelloWorldWriter/Toggtime/total)
+
 A small DOS demo that animates the text-mode video memory at $B800 by toggling characters and color attributes at random screen positions.
 
 <p align="center">
