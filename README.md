@@ -7,17 +7,13 @@
 ![GitHub Release](https://img.shields.io/github/v/release/TheHelloWorldWriter/Toggtime)
 ![GitHub Downloads](https://img.shields.io/github/downloads/TheHelloWorldWriter/Toggtime/total)
 
-A small DOS demo that animates the text-mode video memory at $B800 by toggling characters and color attributes at random screen positions.
+Toggtime is a small DOS demo I wrote in October 1995 in Borland Turbo Pascal 7, while I was learning to program. I had just discovered that the 80×25 text-mode screen is really just an array of bytes at memory address `$B800` — two bytes per position, one for the character and one for the color attribute — and that Turbo Pascal's `absolute` keyword lets you map a typed array directly onto it. Instead of the standard Crt unit approach of moving a cursor with `GotoXY` and outputting characters with `Write`, you can just assign a byte and it appears on screen instantly, at any position, with no overhead.
 
 <p align="center">
   <img src="docs/images/toggtime-dosbox-x-macos-demo.gif" alt="Animated demo of Toggtime toggling random characters and color attributes on a DOS text-mode screen">
 </p>
 
-I wrote Toggtime in October 1995 in Borland Turbo Pascal 7, on an MS-DOS PC. I was learning to program, and I had just discovered that the text-mode screen is really just an array of bytes at memory address `$B800` — two bytes per position, one for the character and one for the color attribute. Turbo Pascal's `absolute` keyword lets you map a typed array directly onto that address, so the screen becomes an ordinary variable you can write to.
-
-The standard way to output text in Turbo Pascal was through the Crt unit: move the cursor with `GotoXY`, set a color with `TextAttr`, then `Write` a character. It works, but it's sequential and cursor-based. Direct video memory writes skip all of that — assign a byte and it appears on screen, no cursor, no overhead.
-
-Toggtime is the small demo I built to explore that difference. It writes random characters and attributes to video memory as fast as the CPU allows, and lets you switch between modes to see what each byte does: color attributes only, characters only, both, or a single random pair frozen across the screen.
+Toggtime is the small demo I built to see that in action. It throws random characters and color attributes at video memory as fast as the CPU allows, and lets you switch modes to isolate what each byte does: colors only, characters only, both at once, or a single random pair frozen across the entire screen.
 
 Thirty years later, in April 2026, I dug the source out and got it to compile and run again in DOSBox-X on a modern Mac. It still works.
 
