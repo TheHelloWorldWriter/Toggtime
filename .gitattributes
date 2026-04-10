@@ -1,3 +1,6 @@
 # Default: store text files as LF in the repo, check them out as CRLF
 # (Turbo Pascal 7 and other DOS tools expect CRLF line endings)
 * text=auto eol=crlf
+
+# Shell scripts must keep LF endings to run on macOS/Linux
+*.sh text eol=lf

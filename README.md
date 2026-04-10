@@ -36,7 +36,7 @@ When you launch Toggtime, it starts filling the screen with random characters an
   </a>
 </p>
 
-The ZIP contains the DOS executable, a short readme, and the MIT license. Run `TOGGTIME.EXE` in [DOSBox-X](https://dosbox-x.com/) or any DOS-compatible environment.
+The ZIP contains the DOS executable, a short readme, and the MIT license. Run `TOGGTIME.EXE` in DOSBox-X or any DOS-compatible environment.
 
 ## Building and running
 
