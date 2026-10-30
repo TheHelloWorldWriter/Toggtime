@@ -72,7 +72,7 @@ What surprised me was how familiar it all felt. Turbo Pascal was one of the firs
   </tr>
 </table>
 
-To build from the command line instead, run `python scripts/build.py`. It compiles the program in [DOSBox Staging](https://www.dosbox-staging.org/) without opening the IDE, and checks that the result is byte-identical to the `TOGGTIME.EXE` in the v1.0.0 release. Set `DOSBOX` to the DOSBox Staging executable and `DOS_C_DIR` to the folder that DOSBox mounts as `C:`, with Turbo Pascal installed in it. The script looks for the compiler at `C:\BP\BIN\TPC.EXE`; set `TPC` if yours is elsewhere, for example `C:\TP\BIN\TPC.EXE`. With `--web`, it also rebuilds the browser version in `web/`.
+To build from the command line instead, run `python scripts/build.py`. It compiles the program in [DOSBox Staging](https://www.dosbox-staging.org/) without opening the IDE, and checks that the result is byte-identical to the `TOGGTIME.EXE` in the v1.0.0 release. Set `DOSBOX` to the DOSBox Staging executable and `DOS_C_DIR` to the folder that DOSBox mounts as `C:`, with Turbo Pascal installed in it. The script looks for the compiler at `C:\BP\BIN\TPC.EXE`; set `TPC` if yours is elsewhere, for example `C:\TP\BIN\TPC.EXE`. With `--web`, it also rebuilds the browser version in `web/`, and with `--package`, it writes the release ZIP to `dist/`.
 
 ## Source layout
 
@@ -89,7 +89,7 @@ web/
   index.html      browser version, running the DOS program in js-dos
   toggtime.jsdos  js-dos bundle with TOGGTIME.EXE, written by build.py
 scripts/
-  build.py        command-line build in DOSBox Staging
+  build.py        build, browser bundle and release ZIP
 ```
 
 The five units are small and reusable on their own. They may eventually move into a shared Hello World Writer Pascal library.

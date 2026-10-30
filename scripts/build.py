@@ -2,7 +2,7 @@
 
 The compiler runs inside a DOSBox Staging that starts, compiles and exits on
 its own, working on a temporary copy of the source so the repo stays clean.
-Run from anywhere: python scripts/build.py [--web]
+Run from anywhere: python scripts/build.py [--web] [--package]
 
 Environment variables:
   DOSBOX      the DOSBox Staging executable
@@ -25,6 +25,10 @@ REPO_DIR = Path(__file__).resolve().parent.parent
 PROGRAM = REPO_DIR / "SRC" / "TOGGTIME.PAS"
 UNITS_DIR = REPO_DIR / "UNITS"
 WEB_BUNDLE = REPO_DIR / "web" / "toggtime.jsdos"
+DIST_DIR = REPO_DIR / "dist"
+
+VERSION = "1.0.0"
+PACKAGE = DIST_DIR / f"toggtime-{VERSION}-dos.zip"
 
 DEFAULT_TPC = r"C:\BP\BIN\TPC.EXE"
 
@@ -46,8 +50,16 @@ toggtime
 echo Type TOGGTIME to run Toggtime again.
 """
 
-# A fixed date keeps the bundle byte-identical across builds
+# Fixed dates keep the bundle and the ZIP byte-identical across builds; the
+# ZIP's is the v1.0.0 release date
 BUNDLE_DATE = (1995, 10, 13, 0, 0, 0)
+PACKAGE_DATE = (2026, 4, 10, 0, 0, 0)
+
+
+def add_file(archive: zipfile.ZipFile, name: str, data: bytes, date: tuple) -> None:
+    info = zipfile.ZipInfo(name, date)
+    info.compress_type = zipfile.ZIP_DEFLATED
+    archive.writestr(info, data)
 
 
 def required_env(name: str, description: str) -> Path:
@@ -98,22 +110,31 @@ def compile_exe(build_dir: Path) -> bytes:
 
 
 def write_bundle(exe: bytes) -> None:
-    def add(archive: zipfile.ZipFile, name: str, data: bytes) -> None:
-        info = zipfile.ZipInfo(name, BUNDLE_DATE)
-        info.compress_type = zipfile.ZIP_DEFLATED
-        archive.writestr(info, data)
-
     WEB_BUNDLE.parent.mkdir(exist_ok=True)
     with zipfile.ZipFile(WEB_BUNDLE, "w") as archive:
-        add(archive, ".jsdos/dosbox.conf", BUNDLE_DOSBOX_CONF.encode("ascii"))
-        add(archive, "TOGGTIME.EXE", exe)
+        conf = BUNDLE_DOSBOX_CONF.encode("ascii")
+        add_file(archive, ".jsdos/dosbox.conf", conf, BUNDLE_DATE)
+        add_file(archive, "TOGGTIME.EXE", exe, BUNDLE_DATE)
     print(f"Wrote {WEB_BUNDLE.relative_to(REPO_DIR).as_posix()}")
+
+
+def write_package(exe: bytes) -> None:
+    with zipfile.ZipFile(PACKAGE, "w") as archive:
+        add_file(archive, "TOGGTIME.EXE", exe, PACKAGE_DATE)
+        for name in ("README.TXT", "LICENSE.TXT"):
+            # DOS reads these, so they get CRLF whatever the checkout has
+            text = (DIST_DIR / name).read_bytes().replace(b"\r\n", b"\n")
+            add_file(archive, name, text.replace(b"\n", b"\r\n"), PACKAGE_DATE)
+    print(f"Wrote {PACKAGE.relative_to(REPO_DIR).as_posix()}")
 
 
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     parser.add_argument(
         "--web", action="store_true", help="also write the js-dos bundle for web/"
+    )
+    parser.add_argument(
+        "--package", action="store_true", help="also write the release ZIP in dist/"
     )
     args = parser.parse_args()
 
@@ -129,6 +150,8 @@ def main() -> None:
 
     if args.web:
         write_bundle(exe)
+    if args.package:
+        write_package(exe)
 
 
 if __name__ == "__main__":
