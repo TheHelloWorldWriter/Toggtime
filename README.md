@@ -3,9 +3,9 @@
 ![Turbo Pascal 7.0](https://img.shields.io/badge/Turbo_Pascal-7.0-0000AA)
 ![MS-DOS](https://img.shields.io/badge/Platform-MS--DOS-000000)
 ![Written in 1995](https://img.shields.io/badge/Written_in-1995-CC8800)
-![License: MIT](https://img.shields.io/github/license/TheHelloWorldWriter/Toggtime)
-![GitHub Release](https://img.shields.io/github/v/release/TheHelloWorldWriter/Toggtime)
-![GitHub Downloads](https://img.shields.io/github/downloads/TheHelloWorldWriter/Toggtime/total)
+![License: MIT](https://img.shields.io/github/license/TheHelloWorldWriter/Toggtime?cacheSeconds=86400)
+![GitHub Release](https://img.shields.io/github/v/release/TheHelloWorldWriter/Toggtime?cacheSeconds=3600)
+![GitHub Downloads](https://img.shields.io/github/downloads/TheHelloWorldWriter/Toggtime/total?cacheSeconds=86400)
 
 Toggtime is a small DOS demo I wrote in October 1995 in Borland Turbo Pascal 7, while I was learning to program. I had just discovered that the 80×25 text-mode screen is really just an array of bytes at memory address `$B800` - two bytes per position, one for the character and one for the color attribute - and that Turbo Pascal's `absolute` keyword lets you map a typed array directly onto it. Instead of the standard Crt approach - `GotoXY` to move the cursor, `Write` to output a character - you just assign a byte to any screen position and it appears instantly.
 
