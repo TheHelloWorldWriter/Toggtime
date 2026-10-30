@@ -1,6 +1,11 @@
-# Default: store text files as LF in the repo, check them out as CRLF
-# (Turbo Pascal 7 and other DOS tools expect CRLF line endings)
-* text=auto eol=crlf
+# Default: store text files as LF in the repo and check them out as LF
+* text=auto eol=lf
 
-# Shell scripts must keep LF endings to run on macOS/Linux
-*.sh text eol=lf
+# DOS-side files keep CRLF, as Turbo Pascal 7 and other DOS tools expect
+SRC/** text eol=crlf
+UNITS/** text eol=crlf
+dist/*.TXT text eol=crlf
+
+*.EXE binary
+*.ZIP binary
+*.jsdos binary

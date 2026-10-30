@@ -1,7 +1,8 @@
 {
-    "recommendations": [
-        "mhutchie.git-graph",
-        "nhoizey.gremlins",
-        "alefragnani.pascal"
-    ]
+  "recommendations": [
+    "alefragnani.pascal",
+    "editorconfig.editorconfig",
+    "mhutchie.git-graph",
+    "nhoizey.gremlins"
+  ]
 }
