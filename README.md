@@ -38,6 +38,8 @@ When you launch Toggtime, it starts filling the screen with random characters an
 
 The browser version runs the same DOS program in [js-dos](https://js-dos.com/), a DOSBox port for the web. Double-click the screen for full screen. After you quit with **Q**, type `TOGGTIME` at the DOS prompt to start it again.
 
+Chrome and Edge can also install it as an app, and Safari can add it to the Dock or the Home Screen. It then opens in its own window, but still needs an internet connection.
+
 ## Download
 
 <p>
