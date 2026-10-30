@@ -12,24 +12,23 @@ unit StdChar;
 interface
 
 type
-  PXChar = ^Char;    { Pointer to Char }
+  PXChar = ^Char;
 
 type
-  TCharSet = set of Char;    { Named set-of-Char type }
+  TCharSet = set of Char;
 
 type
-  PCharSet  = ^TCharSet;    { Pointer to a TCharSet }
+  PCharSet  = ^TCharSet;
 
+{ Decimal and hexadecimal digits, indexed by value }
 const
-  { Decimal digit chars, indexed 0..9 }
   Digits : array[0..9] of Char = '0123456789';
 
 const
-  { Hex digit chars, indexed $0..$F }
   HexDigits : array [0..$F] of Char = '0123456789ABCDEF';
 
+{ The characters of a hexadecimal number, in either case }
 const
-  { All valid hex digit chars (upper- and lower-case) }
   HexDigitsSet : set of '0'..'z' = ['0'..'9', 'A'..'F', 'a'..'f'];
 
 implementation

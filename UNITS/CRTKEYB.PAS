@@ -11,44 +11,48 @@ unit CRTKeyb;
 
 interface
 
-{ Keyboard input on top of Crt, with extended-key (#0 prefix) handling }
-
 uses StdChar;
 
-{ Two-byte key encoding: Code = ASCII (#0 if extended), ExtCode = scan code }
+{ A key as two bytes, for client code, since no routine here uses it;
+  for an extended key Code is 0 and ExtCode is its scan code }
 type
   KeyRec = record
     Code, ExtCode : Byte
   end;
 
-{ Set of yes/no keys for confirmation prompts }
+{ Keys that answer a yes/no question }
 const
   YesNoKeys = [ 'y', 'Y', 'n', 'N' ];
 
-{ Sentinel set meaning "match any key" (for KeyInRange / ExtKeyInRange) }
+{ Accepts any key in KeyInRange and ExtKeyInRange }
 const
   AnyKey = [];
 
-{ Most recent key pair read by ReadAKey }
+{ The last key read by ReadAKey, as its C and Ch }
 var
   LastKey, LastExtKey : Char;
 
-{ Reads a key pair. C = ASCII char (#0 for extended keys, then Ch = scan code) }
+{ Waits for a key; for an extended key C is #0 and Ch is its scan code,
+  otherwise Ch keeps its value }
 procedure ReadAKey(var C, Ch : Char);
 
-{ Drains the keyboard buffer (discards all pending keystrokes) }
+{ Discards any keys waiting in the keyboard buffer }
 procedure ClrKbd;
 
-{ Waits for and returns an ASCII key in K. Pass AnyKey to accept any. }
+{ Waits for a key in K and returns it; AnyKey accepts any key that is
+  not an extended key }
 function  KeyInRange(const K : TCharSet) : Char;
 
-{ Waits for and returns an extended-key scan code in K. Pass AnyKey for any. }
+{ Waits for an extended key whose scan code is in K and returns the scan
+  code; AnyKey accepts any extended key }
 function  ExtKeyInRange(const K : TCharSet) : Char;
 
-{ Returns true if Key is currently in the buffer (consumes one key) }
+{ Returns True if a key is waiting and it is Key; the key is removed
+  even when it does not match }
 function  IsKey(const Key : Char) : Boolean;
 
-{ Returns true if extended Key is currently in the buffer (consumes one key) }
+{ Returns True if a key is waiting and it is the extended key with scan
+  code Key; the key is removed even when it does not match }
 function  IsExtKey(const Key : Char) : Boolean;
 
 implementation
