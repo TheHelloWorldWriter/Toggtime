@@ -80,18 +80,20 @@ To build from the command line instead, run `python scripts/build.py`. It compil
 
 ```
 SRC/
-  TOGGTIME.PAS    main program
+  TOGGTIME.PAS          main program
 UNITS/
-  STDCHAR.PAS     character types and digit/hex constants
-  CURSOR.PAS      BIOS INT 10h cursor + keyboard typematic rate
-  CRTKEYB.PAS     keyboard input with extended-key handling
-  CRTX.PAS        Crt extensions: attributes, windows, frames, sound
-  VIAT.PAS        direct VRAM arrays mapped via the absolute keyword
+  STDCHAR.PAS           character types and digit/hex constants
+  CURSOR.PAS            BIOS INT 10h cursor + keyboard typematic rate
+  CRTKEYB.PAS           keyboard input with extended-key handling
+  CRTX.PAS              Crt extensions: attributes, windows, frames, sound
+  VIAT.PAS              direct VRAM arrays mapped via the absolute keyword
 web/
-  index.html      browser version, running the DOS program in js-dos
-  toggtime.jsdos  js-dos bundle with TOGGTIME.EXE, written by build.py
+  index.html            browser version, running the DOS program in js-dos
+  toggtime.jsdos        js-dos bundle with TOGGTIME.EXE, written by build.py
+  manifest.webmanifest  web app manifest, for installing it as an app
+  icons/                favicon and app icons
 scripts/
-  build.py        build, browser bundle and release ZIP
+  build.py              build, browser bundle and release ZIP
 ```
 
 The five units are small and reusable on their own. They may eventually move into a shared Hello World Writer Pascal library.
